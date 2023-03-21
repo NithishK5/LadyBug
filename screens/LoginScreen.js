@@ -24,18 +24,18 @@ const LoginScreen = ({ navigation }) => {
         resizeMode="cover"
       >
         <StatusBar style="light" />
-        <View style={tw`w-100 h-50 absolute top-40`}>
+        <View style={tw`w-100 h-50 absolute top-70`}>
           <LottieView
             key="animation"
             autoPlay
             speed={1.0}
             loop
-            resizeMode="cover"
-            source={require("../assets/anim/log.json")}
+            resizeMode="contain"
+            source={require("../assets/anim/1.json")}
           />
         </View>
         <View
-          style={tw`bg-gray-400 h-108 w-23/23 absolute bottom-0 flex flex-col rounded-xl content-center items-center`}
+          style={tw`bg-gray-600 h-75 w-23/23 absolute bottom-0 flex flex-col rounded-xl content-center items-center`}
         >
           <TouchableOpacity
             style={tw`pl-3 pt-3`}
@@ -63,8 +63,8 @@ const LoginScreen = ({ navigation }) => {
           <View>
             <TextInput
               placeholder="Email"
-              label="email"
-              style={{ width: 330, backgroundColor: "#bdbfbe" }}
+              label="Email"
+              style={{ width: 330, backgroundColor: "#8f8b8b" }} //#bdbfbe
               value={email}
               textContentType="emailAddress"
               keyboardType="email-address"
@@ -77,7 +77,7 @@ const LoginScreen = ({ navigation }) => {
             <TextInput
               placeholder="Password"
               label="Password"
-              style={{ width: 330, marginTop: 10, backgroundColor: "#bdbfbe" }}
+              style={{ width: 330, marginTop: 10, backgroundColor: "#8f8b8b" }}
               value={password}
               textContentType="password"
               secureTextEntry={true}
@@ -119,25 +119,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     alignItems: "center",
     justifyContent: "center",
-    shadowColor: "teal",
+    shadowColor: "#8f739c",
     shadowOffset: { width: 0, height: 0 },
     shadowOpacity: 1,
     shadowRadius: 10,
     elevation: 10,
-    marginTop: 10,
-  },
-  google: {
-    backgroundColor: "black",
-    borderRadius: 25,
-    paddingVertical: 5,
-    paddingHorizontal: 20,
-    alignItems: "center",
-    justifyContent: "center",
-    shadowColor: "teal",
-    shadowOffset: { width: 0, height: 0 },
-    shadowOpacity: 1,
-    shadowRadius: 10,
-    elevation: 10,
-    marginTop: 20,
+    marginTop: 30,
   },
 });

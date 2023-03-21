@@ -39,27 +39,25 @@ const SignUpScreen = ({ navigation }) => {
         source={require("../assets/img/bg-signup.avif")}
         resizeMode="cover"
       >
-        <View style={tw`w-100 h-50 absolute top-20 rounded-full`}>
+        <View style={tw`w-100 h-50 absolute top-40 `}>
           <LottieView
             key="animation"
             autoPlay
             loop
-            speed={1.0}
+            speed={0.5}
             resizeMode="contain"
-            source={require("../assets/anim/signup.json")}
+            source={require("../assets/anim/2.json")}
           />
         </View>
         <View
-          style={tw`bg-gray-400 h-135 w-23/23 absolute bottom-0 flex flex-col rounded-xl justify-center content-center items-center`}
+          style={tw`bg-gray-600 h-105 w-23/23 absolute bottom-0 flex flex-col rounded-xl justify-center content-center items-center`}
         >
           <TouchableOpacity
             style={{
               position: "absolute",
               left: 20,
               top: 20,
-              // flex: 1,
             }}
-            // style={tw`pl-3`}
             onPress={() => {
               navigation.navigate("Welcome");
             }}
@@ -81,8 +79,8 @@ const SignUpScreen = ({ navigation }) => {
           >
             <TextInput
               placeholder="UserName"
-              label="UserName"
-              style={{ width: 360, backgroundColor: "#bdbfbe" }}
+              label="Username"
+              style={{ width: 360, backgroundColor: "#8f8b8b" }}
               value={name}
               textContentType="name"
               onChangeText={(text) => setName(text)}
@@ -94,8 +92,8 @@ const SignUpScreen = ({ navigation }) => {
           >
             <TextInput
               placeholder="Email"
-              label="email"
-              style={{ width: 360, backgroundColor: "#bdbfbe" }}
+              label="Email"
+              style={{ width: 360, backgroundColor: "#8f8b8b" }}
               value={email}
               textContentType="emailAddress"
               keyboardType="email-address"
@@ -110,7 +108,7 @@ const SignUpScreen = ({ navigation }) => {
             <TextInput
               placeholder="Password"
               label="Password"
-              style={{ width: 360, backgroundColor: "#bdbfbe" }}
+              style={{ width: 360, backgroundColor: "#8f8b8b" }}
               value={password}
               textContentType="password"
               secureTextEntry={true}
@@ -137,7 +135,7 @@ const SignUpScreen = ({ navigation }) => {
               Already have an account?
             </Text>
             <Button
-              style={tw`pt-3`}
+              style={tw`pt-2`}
               textColor="red"
               mode="text"
               onPress={() => navigation.navigate("Login")}
@@ -161,21 +159,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     alignItems: "center",
     justifyContent: "center",
-    shadowColor: "teal",
-    shadowOffset: { width: 0, height: 0 },
-    shadowOpacity: 1,
-    shadowRadius: 10,
-    elevation: 10,
-    marginTop: 10,
-  },
-  google: {
-    backgroundColor: "black",
-    borderRadius: 25,
-    paddingVertical: 5,
-    paddingHorizontal: 20,
-    alignItems: "center",
-    justifyContent: "center",
-    shadowColor: "teal",
+    shadowColor: "#8f739c",
     shadowOffset: { width: 0, height: 0 },
     shadowOpacity: 1,
     shadowRadius: 10,
