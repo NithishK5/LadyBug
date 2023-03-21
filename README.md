@@ -28,3 +28,4 @@ npm i react-native-permissions
 npm install react-native-paper
 npx expo install lottie-react-native
 npx expo install react-native-reanimated react-native-gesture-handler
+npm i react-native-loading-spinner-overlay

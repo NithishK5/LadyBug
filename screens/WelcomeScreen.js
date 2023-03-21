@@ -26,7 +26,7 @@ const WelcomeScreen = ({ navigation }) => {
         <View style={tw`w-100 h-50 absolute top-20`}>
           <LottieView
             key="animation"
-            speed="2.3"
+            speed={2.3}
             autoPlay
             loop
             resizeMode="cover"

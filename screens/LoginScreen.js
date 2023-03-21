@@ -10,46 +10,12 @@ import { Button, ActivityIndicator, Colors } from "react-native-paper";
 import { TextInput } from "react-native-paper";
 import LottieView from "lottie-react-native";
 import FeatherIcon from "react-native-vector-icons/Feather";
-import { CLIENT_ID, IOS_CLIENT_ID, ANDROID_CLIENT_ID } from "@env";
-import * as Google from "expo-auth-session/providers/google";
-import * as WebBrowser from "expo-web-browser";
 
 const LoginScreen = ({ navigation }) => {
   const { setEmail, email, password, setPassword, handleEmailLogin } =
     useContext(AuthContext);
   const [isLoading, setIsLoading] = useState(false);
 
-  const [token, setToken] = useState("");
-  const [userInfo, setUserInfo] = useState(null);
-
-  const [request, response, promptAsync] = Google.useAuthRequest({
-    androidClientId: ANDROID_CLIENT_ID,
-    iosClientId: IOS_CLIENT_ID,
-    expoClientId: CLIENT_ID,
-  });
-
-  useEffect(() => {
-    if (response?.type === "success") {
-      setToken(response.authentication.accessToken);
-      getUserInfo();
-    }
-  }, [response, token]);
-
-  const getUserInfo = async () => {
-    try {
-      const response = await fetch(
-        "https://www.googleapis.com/userinfo/v2/me",
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        }
-      );
-
-      const user = await response.json();
-      setUserInfo(user);
-    } catch (error) {
-      // Add your own error handler here
-    }
-  };
   return (
     <KeyboardAvoidingView behavior="padding" enabled>
       <ImageBackground
@@ -62,6 +28,7 @@ const LoginScreen = ({ navigation }) => {
           <LottieView
             key="animation"
             autoPlay
+            speed={1.0}
             loop
             resizeMode="cover"
             source={require("../assets/anim/log.json")}
@@ -131,23 +98,6 @@ const LoginScreen = ({ navigation }) => {
                 }}
               >
                 Login
-              </Button>
-            ) : (
-              <ActivityIndicator animating={true} color="#0000ff" />
-            )}
-            <Text style={tw`text-lg font-bold pt-4`}>- Or Continue With -</Text>
-            {!isLoading ? (
-              <Button
-                style={styles.google}
-                icon="google"
-                mode="elevated"
-                textColor="red"
-                onPress={async () => {
-                  await promptAsync();
-                  navigation.navigate("Home");
-                }}
-              >
-                Continue login with Google
               </Button>
             ) : (
               <ActivityIndicator animating={true} color="#0000ff" />

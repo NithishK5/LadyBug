@@ -9,17 +9,11 @@ import {
 } from "react-native";
 import React, { useContext, useEffect, useState } from "react";
 import tw from "twrnc";
-import { Icon } from "@rneui/themed";
 import { AuthContext } from "../Services/AuthProvider";
-import * as Google from "expo-auth-session/providers/google";
-import * as WebBrowser from "expo-web-browser";
 import { TextInput } from "react-native-paper";
 import { Button } from "react-native-paper";
 import LottieView from "lottie-react-native";
 import FeatherIcon from "react-native-vector-icons/Feather";
-import { CLIENT_ID, IOS_CLIENT_ID, ANDROID_CLIENT_ID } from "@env";
-
-WebBrowser.maybeCompleteAuthSession();
 
 const SignUpScreen = ({ navigation }) => {
   const {
@@ -33,38 +27,6 @@ const SignUpScreen = ({ navigation }) => {
     setUser,
     handleEmailSignup,
   } = useContext(AuthContext);
-
-  const [token, setToken] = useState("");
-  const [userInfo, setUserInfo] = useState(null);
-
-  const [request, response, promptAsync] = Google.useAuthRequest({
-    androidClientId: ANDROID_CLIENT_ID,
-    iosClientId: IOS_CLIENT_ID,
-    expoClientId: CLIENT_ID,
-  });
-
-  useEffect(() => {
-    if (response?.type === "success") {
-      setToken(response.authentication.accessToken);
-      getUserInfo();
-    }
-  }, [response, token]);
-
-  const getUserInfo = async () => {
-    try {
-      const response = await fetch(
-        "https://www.googleapis.com/userinfo/v2/me",
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        }
-      );
-
-      const user = await response.json();
-      setUserInfo(user);
-    } catch (error) {
-      // Add your own error handler here
-    }
-  };
 
   return (
     <KeyboardAvoidingView
@@ -82,6 +44,7 @@ const SignUpScreen = ({ navigation }) => {
             key="animation"
             autoPlay
             loop
+            speed={1.0}
             resizeMode="contain"
             source={require("../assets/anim/signup.json")}
           />
@@ -105,10 +68,6 @@ const SignUpScreen = ({ navigation }) => {
           </TouchableOpacity>
           <Text
             style={{
-              // flex: 2,
-              // position: "absolute",
-              //   left:10,
-              //   top: 10,
               marginBottom: 20,
               fontSize: 22,
               fontWeight: "bold",
@@ -124,7 +83,6 @@ const SignUpScreen = ({ navigation }) => {
               placeholder="UserName"
               label="UserName"
               style={{ width: 360, backgroundColor: "#bdbfbe" }}
-              // style={tw`pl-1 pr-60 justify-start my-1 bg-gray-300`}
               value={name}
               textContentType="name"
               onChangeText={(text) => setName(text)}
@@ -172,19 +130,6 @@ const SignUpScreen = ({ navigation }) => {
               }}
             >
               Sign Up
-            </Button>
-            <Text style={tw`text-lg font-bold pt-4`}>- Or Continue With -</Text>
-            <Button
-              style={styles.google}
-              icon="google"
-              mode="elevated"
-              textColor="red"
-              onPress={async () => {
-                await promptAsync();
-                navigation.navigate("Home");
-              }}
-            >
-              Continue login with Google
             </Button>
           </View>
           <View style={tw`flex-row`}>

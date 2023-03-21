@@ -33,7 +33,7 @@ const SECTIONS = [
       {
         icon: "airplay",
         color: "#fd2d54",
-        label: "Accessibility mode",
+        label: "Scotland",
         value: false,
         type: "boolean",
       },
@@ -61,7 +61,7 @@ const SECTIONS = [
   },
 ];
 
-export default function SettingScreen({ navigation }) {
+export default function SettingScreen({ navigation, test }) {
   const { user, logout, name, setName } = useContext(AuthContext);
   return (
     <SafeAreaView style={tw`bg-black`}>
@@ -108,7 +108,7 @@ export default function SettingScreen({ navigation }) {
             </View>
           </TouchableOpacity>
           <View style={styles.profileBody}>
-            <Text style={styles.profileName}>{user.name}</Text>
+            <Text style={styles.profileName}>{user?.name}</Text>
           </View>
         </View>
 
@@ -132,7 +132,16 @@ export default function SettingScreen({ navigation }) {
 
                     <View style={styles.rowSpacer} />
 
-                    {type === "boolean" && <Switch value={value} />}
+                    {type === "boolean" && (
+                      <Switch
+                        value={value}
+                        onValueChange={(val) => {
+                          if (label === "Scotland") {
+                            test = "new test";
+                          }
+                        }}
+                      />
+                    )}
 
                     {type === "link" && (
                       <FeatherIcon
