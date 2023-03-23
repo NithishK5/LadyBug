@@ -19,8 +19,9 @@ const LoginScreen = ({ navigation }) => {
   return (
     <KeyboardAvoidingView behavior="padding" enabled>
       <ImageBackground
-        style={tw`h-full flex-col justify-center items-center`}
-        source={require("../assets/img/bg-signup.avif")}
+        // style={tw`h-full flex-col justify-center items-center`}
+        style={{ height: "102%", marginTop: -10 }}
+        source={require("../assets/img/bg.png")}
         resizeMode="cover"
       >
         <StatusBar style="light" />
@@ -35,7 +36,10 @@ const LoginScreen = ({ navigation }) => {
           />
         </View>
         <View
-          style={tw`bg-gray-600 h-75 w-23/23 absolute bottom-0 flex flex-col rounded-xl content-center items-center`}
+          style={{
+            ...tw`bg-gray-600 h-75 w-23/23 absolute bottom-0 flex flex-col rounded-xl content-center items-center`,
+            backgroundColor: "#6d6987",
+          }}
         >
           <TouchableOpacity
             style={tw`pl-3 pt-3`}
@@ -124,6 +128,6 @@ const styles = StyleSheet.create({
     shadowOpacity: 1,
     shadowRadius: 10,
     elevation: 10,
-    marginTop: 30,
+    marginTop: 20,
   },
 });

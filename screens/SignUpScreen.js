@@ -35,8 +35,9 @@ const SignUpScreen = ({ navigation }) => {
       enabled
     >
       <ImageBackground
-        style={tw`h-full flex-col justify-center items-center`}
-        source={require("../assets/img/bg-signup.avif")}
+        style={{ height: "102%", marginTop: -10 }}
+        // style={tw`h-full flex-col justify-center items-center `}
+        source={require("../assets/img/bg.png")}
         resizeMode="cover"
       >
         <View style={tw`w-100 h-50 absolute top-40 `}>
@@ -50,7 +51,10 @@ const SignUpScreen = ({ navigation }) => {
           />
         </View>
         <View
-          style={tw`bg-gray-600 h-105 w-23/23 absolute bottom-0 flex flex-col rounded-xl justify-center content-center items-center`}
+          style={{
+            ...tw`h-105 w-23/23 absolute bottom-0 flex flex-col rounded-xl justify-center content-center items-center`,
+            backgroundColor: "#6d6987",
+          }}
         >
           <TouchableOpacity
             style={{
@@ -135,7 +139,7 @@ const SignUpScreen = ({ navigation }) => {
               Already have an account?
             </Text>
             <Button
-              style={tw`pt-2`}
+              style={tw`pt-2.8`}
               textColor="red"
               mode="text"
               onPress={() => navigation.navigate("Login")}

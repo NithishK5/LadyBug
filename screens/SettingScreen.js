@@ -25,18 +25,8 @@ const SECTIONS = [
         icon: "moon",
         color: "#007afe",
         label: "Dark Mode",
-        value: true,
-        type: "boolean",
       },
       { icon: "navigation", color: "#32c759", label: "Location", type: "link" },
-
-      {
-        icon: "airplay",
-        color: "#fd2d54",
-        label: "Scotland",
-        value: false,
-        type: "boolean",
-      },
     ],
   },
   {
@@ -50,21 +40,14 @@ const SECTIONS = [
   {
     header: "Account",
     icon: "align-center",
-    items: [
-      //   {
-      //     icon: "log-out",
-      //     color: "#32c759",
-      //     label: "LogOut",
-      //     type: "link",
-      //   },
-    ],
+    items: [],
   },
 ];
 
 export default function SettingScreen({ navigation, test }) {
   const { user, logout, name, setName } = useContext(AuthContext);
   return (
-    <SafeAreaView style={tw`bg-black`}>
+    <SafeAreaView style={tw`bg-black flex-1`}>
       <StatusBar style="light" />
       <ScrollView contentContainerStyle={styles.container}>
         <View style={styles.profile}>
@@ -87,13 +70,6 @@ export default function SettingScreen({ navigation, test }) {
             }}
           >
             <View style={styles.profileAvatarWrapper}>
-              {/* <Image
-                alt=""
-                source={{
-                  uri: "https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2.5&w=256&h=256&q=80",
-                }}
-                style={styles.profileAvatar}
-              /> */}
               <Avatar.Icon
                 style={styles.profileAvatar}
                 size={100}
