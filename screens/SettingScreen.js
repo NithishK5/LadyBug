@@ -152,7 +152,7 @@ export default function SettingScreen({ navigation, test }) {
             color: "gray",
           }}
         >
-          Version 1.0.0 (2023) - Production
+          Version 1.0.1 (2023) - Production
         </Text>
       </ScrollView>
     </SafeAreaView>
