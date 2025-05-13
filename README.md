@@ -1,16 +1,5 @@
 Women Safety Application (LADYBUG)
 
-Table of Contents
-
-1.Introduction
-2.Features
-3.Requirements
-4.Installation
-5.Running the Application
-6.Usage
-7.License
-8.Contact
-
 1.Introduction
 
 The Women Safety Application is a cutting-edge, cross-platform mobile solution designed to empower and protect women by providing real-time crime data. Developed with React Native and Expo, this app aims to instill confidence and security in women as they navigate through their daily lives. By harnessing the power of technology and community, the Women Safety Application serves as a digital guardian, fostering a safer environment for women everywhere.
